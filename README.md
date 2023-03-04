@@ -38,7 +38,7 @@ ARP traduit une IP connue en MAC. Quand un host à besoin de transférer de la d
 * VLSM se produit lorsqu’un interréseau utilise plus d’un masque pour différents sous-réseaux d’un réseau unique de classe A, B ou C. La figure suivante montre un exemple de VLSM utilisé dans le réseau 10.0.0.0 de classe A .
 
 VLSM in Network 10.0.0.0: Masks /24 and /30 : 
-<img src="m/2.png"> 
+<img src="m/3.png"> 
 
 * La figure montre un choix typique d'utilisation d'un masque /30 sur les liaisons série point à point, avec le masque /24 pour les LAN de sous-réseaux. Tous les sous-réseaux font partis du réseaux de classe A 10.0.0.0, avec deux masques utilisés, et ainsi la configuration de ce réseaux rentre dans la définition de VLSM. 
 
@@ -53,3 +53,27 @@ avoid having to obtain another registered IP network number from regional IP add
 assignment authorities. With private networks, as defined in RFC 1918, running out of
 addresses is not as big a negative, because you can always grab another private network
 from RFC 1918 if you run out.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## STP Spanning Tree Protocol 
+
+* STP permet aux LANs Ethernet d'avoir les bénéfices ajoutés de l'intallation de liens redondant dans un LAN, tout en surmontant les problèmes connus qui arrive lors de l'ajout de ces liens supplémentaires. L'utilisation de liens redondants dans la conception d'un LAN  permet au LAN de continuer à fonctionner même si certains liens échouent ou même si certains switches entiers tombent. Une configuration de LAN appropriée devrait ajouter assez de redondance et ainsi aucun single point of failure(point de défaillance) ne plante le LAN; STP permet à la configuration d'utiliser la redondance sans causer de problèmes supplémentaires. 
+
+* Sans mechanismes comme STP ou RSTP (rapid), un LAN avec des liens redondants entrainerait les trames Ethernet à looper pour une période de temps indéfinie. Avec STP/RSTP activé, certains switches bloquent des ports et donc ces ports ne vont pas transférer les trames. STP/RSTP choisissent de façon intelligente quels ports bloquer, avec deux objectifs en tête : 
+    * Tous les devices dans un VLAN peut envoyer des trames à tous les autres devices. En fait, STP ou RSTP ne bloquent pas trop de ports, coupant certaines parties du LAN d'autres.
+    * Les trames on une durée de vie courte et ne boucle pas autour du réseaux indéfiniement.
+
+* STP/R trouve un compromis, autorisant les trames à être délivrées à chaques devices, sans causer de problèmes qui arrivent quand les trames bouclent autour du réseaux encore et encore. 
+
+
