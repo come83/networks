@@ -85,6 +85,8 @@ zefzaef
 * L'IPv6 est un protocole réseau `connection-less` de la couche 3 du modele OSI. Ces adresses sont écrites sur 128bits donc 16 octets au lieu de 4octets (32bits) pour l'IPv4. Le besoin de l'IPv^ est du au fait qu'il n'y a pas assez d'adresses disponible pour tout le monde. Pour contrer cela il y a les reseaux publiques et privés avec l'utilisation du `NAT (Network Address Translation)`. Une adresse IPv6 commence toujours avec X010 = 2 ou X001 = 3.
 L’attribution d’une adresse à une interface est temporaire
 
+![IPs](m/private_public_ip_range.png "Private and public IPs range")
+
 * Durée de vie : temps pendant lequel l’interface est dépositaire de l’adresse
     * Par défaut 30 jours
 * Cas particulier : une adresse lien local a une durée de vie illimitée (fe80…)
@@ -104,3 +106,13 @@ L’attribution d’une adresse à une interface est temporaire
 * NAC : Le contrôle d’accès réseau (NAC) 802.1X permet aux administrateurs de mettre en œuvre un contrôle d’accès uniforme sur les réseaux filaires et sans fil.
 
 ![Proxies](m/fw-proxy_rv-proxy.png "Forward proxy vs Reverse proxy")
+
+## TCP
+* Le protocole TCP est un protocole de la couche transport. Il est dit `connection-full` car il établit une connection avant de transmettre (au contraire de UDP). Pour se faire il entreprend ce qu'on appelle le `3-way handshake` pour initier une connection. Pour terminer une connection (4 étapes) on utilise le flag `FIN`. Pour résumer :
+
+![TCP](m/tcp.png "Fonctionnement du protocole TCP")
+
+* La taille de la fenêtre correspond au nombre d’octets qui seront envoyés par le destinataire avant que la destination n’envoie l’accusé de réception.
+* Le PDU, pour Protocol Data Unit, désigne le nom du type de données pour chaque couche du modèle OSI.
+
+![PDU](m/pdu.png "PDU")
