@@ -194,6 +194,43 @@ Chaque EtherChannel peut comprendre jusqu’à huit ports. Les liens physiques d
     * The Presentation Layer presents data to the Application Layer. Multimedia works here, so think MP4, JPEG, GIF, etc. Encryption, decryption, and data compression also take place at this layer.
 
 * **Layer 5 – Session Layer**
-The role of the Session Layer is to set up, manage, and terminate sessions or dialogues
-between devices. These take place over logical links, and what is really happening is the joining
-of two software applications. SQL, RPC, and NFS all work at the Session Layer.
+    * The role of the Session Layer is to set up, manage, and terminate sessions or dialogues between devices. These take place over logical links, and what is really happening is the joining of two software applications. SQL, RPC, and NFS all work at the Session Layer.
+
+* **Layer 4 – Transport Layer**
+    * The role of the Transport Layer is to break down the data from the higher layers into smaller parts, which are referred to as segments (at this layer). Virtual circuits are set up here, which are required before devices can communicate. Before the data can be passed across the network, the Transport Layer needs to establish how much data can be sent to the remote device. This will depend upon the speed and reliability of the link from end to end. If you have a high-speed link but the end-user has a low-speed link, then the data will need to be sent in smaller chunks. The three methods used to control data flow are as follows:
+        * Flow control
+        * Windowing 
+        * Acknowledgements
+
+    * Flow Control
+        * If the receiving system is being sent more information than it can process, it will ask the sending system to stop for a short time. This normally happens when one side uses broadband and the other uses a dial-up modem. The packet sent telling the other device to stop is known as a source quench message.
+        <img src="m/1.14.png">
+
+    * Windowing
+        * With windowing, each system agrees upon how much data is to be sent before an acknowledgment is required. This “window” opens and closes as data moves along in order to maintain a constant flow.
+        <img src="m/1.15.png">
+
+    * Acknowledgements 
+        * When a certain amount of segments is received, the fact that they all arrived safely and in the correct order needs to be communicated to the sending system.
+        <img src="m/1.16.png">
+        All of this is agreed upon during a process known as a three-way handshake (see Figure 1.17). This is where you send a packet to establish the session. This first packet is called a synchronise (SYN) packet. Then the remote device responds with a synchronise acknowledgement (SYN-ACK) packet. The session is established in the third phase when an acknowledgement (ACK) packet is sent. This is all done via the TCP service.
+        <img src="m/1.17.png">
+
+    * The Transport Layer includes several protocols, and the most widely known are Transmission Control Protocol (TCP) and User Datagram Protocol (UDP), which are part of the TCP/IP suite of protocols. This suite is well known because it is the standard used on the Internet. TCP is known as a reliable connection-oriented protocol. It uses the three-way handshake, windowing, and other techniques to guarantee that the data gets to its destination safely. Many protocols use TCP, including Telnet, HTTPS, and FTP (although it sits at the Application Layer, it does use TCP).
+
+    * UDP, on the other hand, is known as a connectionless protocol. It numbers each packet and then sends them to their destination. It never checks to see whether they arrived safely and will never set up a connection before sending the packet. Sometimes data is not that important and the application developer decides that the information can always be sent again if it fails to arrive at its destination.
+
+    * Why is UDP used at all? TCP uses a lot of bandwidth on the network and there is a lot of traffic sent back and forth to set up the connection, even before the data is sent. This all takes up valuable time and network resources. UDP packets are a lot smaller than TCP packets and they are very useful if a really reliable connection is not that necessary. Protocols that use UDP include TFTP.
+
+* **Layer 3 – Network Layer**
+    * The Network Layer takes the segments from the Transport Layer and breaks them down into smaller units called packets. Most network engineers refer to data as packets, no matter what the OSI layer, which is fine; however, just remember that they are technically packets at the Network Layer.
+    * The Network Layer must determine the best path to take from one network to another; for this reason, routers work at this layer. Routers use logical addressing here, and TCP/IP addressing is called IP addressing, which will be covered in detail later.
+
+* **Layer 2 – Data Link Layer** 
+    * The Data Link Layer chops down packets into smaller units referred to as frames. Layer 2 switches work at this layer and use hardware or MAC addresses, so they can switch traffic much faster because there is no need to check IP addresses and routing tables. WAN protocols work at Layer 2, including HDLC, ISDN, and PPP. Ethernet also works at Layer 2.
+    * In order to interface with the upper and lower levels, the Data Link Layer is further subdivided into the Logical Link Control (LLC) Sublayer and the Media Access Control (MAC) Sublayer. The LLC Sublayer interfaces with the Network Layer and the MAC Sublayer interfaces with the Physical Layer.
+
+* **Layer 1 – Physical Layer**
+    * At this layer, frames are converted into bits for placing on the wire. These bits consist of electrical pulses, which are read as “on” and “off” bits, or in binary 1s and 0s, respectively. Hubs work at this layer, and here is where you will find cable specifications, such as RJ45.
+
+    
