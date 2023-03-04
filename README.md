@@ -77,3 +77,6 @@ from RFC 1918 if you run out.
 * STP/R trouve un compromis, autorisant les trames à être délivrées à chaques devices, sans causer de problèmes qui arrivent quand les trames bouclent autour du réseaux encore et encore. 
 
 
+zefzaef 
+
+
