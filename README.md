@@ -80,3 +80,27 @@ from RFC 1918 if you run out.
 zefzaef 
 
 
+## IPv6
+
+* L'IPv6 est un protocole réseau `connection-less` de la couche 3 du modele OSI. Ces adresses sont écrites sur 128bits donc 16 octets au lieu de 4octets (32bits) pour l'IPv4. Le besoin de l'IPv^ est du au fait qu'il n'y a pas assez d'adresses disponible pour tout le monde. Pour contrer cela il y a les reseaux publiques et privés avec l'utilisation du `NAT (Network Address Translation)`. Une adresse IPv6 commence toujours avec X010 = 2 ou X001 = 3.
+L’attribution d’une adresse à une interface est temporaire
+
+* Durée de vie : temps pendant lequel l’interface est dépositaire de l’adresse
+    * Par défaut 30 jours
+* Cas particulier : une adresse lien local a une durée de vie illimitée (fe80…)
+* Renumérotation d’interface : passage d’une adresse à une autre
+* Transition via un mécanisme obsolescence
+* Plusieurs adresses valides à une même interface
+
+* Au niveau de la notation :
+    * Par convention, on peut supprimer les 0 de poids forts non significatifs :
+    `2001:0db8:0000:0000:0008:0800:200C:417A` => `2001:db8:0:0:8:800:200C:417A`
+    * On peut abréger plusieurs champs nuls consécutifs par :: (mais une seule fois) :
+    `2001:db8::8:800:200C:417A`
+
+## Définitions divers :
+* DMZ : Dans le domaine des réseaux informatiques, une zone démilitarisée (DMZ, Demilitarized Zone) est un sous-réseau physique ou logique qui sépare un réseau local interne (LAN, Local Area Network) d’autres réseaux non sécurisés tels qu’Internet.
+
+* NAC : Le contrôle d’accès réseau (NAC) 802.1X permet aux administrateurs de mettre en œuvre un contrôle d’accès uniforme sur les réseaux filaires et sans fil.
+
+![Proxies](m/fw-proxy_rv-proxy.png "Forward proxy vs Reverse proxy")
